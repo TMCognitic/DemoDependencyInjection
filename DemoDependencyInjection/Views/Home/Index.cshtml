@@ -1,0 +1,58 @@
+﻿@inject ISingletonRepository singletonRepository
+@inject IScopedRepository scopedRepository
+@inject ITransientRepository transientRepository
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Services
+            </th>
+            <th>
+                HashCode from ViewBag
+            </th>
+            <th>
+                HashCode from view Injection
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                Singleton
+            </td>
+            <td>
+                @ViewBag.SingletonHashCode
+            </td>
+            <td>
+                @singletonRepository.GetHashCode()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Scoped
+            </td>
+            <td>
+                @ViewBag.ScopedHashCode
+            </td>
+            <td>
+                @scopedRepository.GetHashCode()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Transient
+            </td>
+            <td>
+                @ViewBag.TransientHashCode
+            </td>
+            <td>
+                @transientRepository.GetHashCode()
+            </td>
+        </tr>
+    </tbody>
+</table>
